@@ -1,0 +1,10 @@
+{
+  "name": "lms",
+  "version": "1.0.0",
+  "description": "a sample LMS application",
+  "scripts": {
+    "start": "cd backend && nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
