@@ -13,8 +13,13 @@ const dashboardRoutes = require('./dashboardRoutes');
 
 
 // Enable CORS for all routes and origins
+// Replace localhost with your frontend's domain in production
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://proud-mud-01a955410.5.azurestaticapps.net'], // Multiple allowed origins
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow credentials (if needed)
+};
 
-app.use(cors());
 /*
 // Set CSP header with data URL allowance
 app.use(
@@ -43,6 +48,10 @@ app.use(function(req, res, next) {
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/auth', authRoutes);
+// Add the new /api/hello route (without authentication)
+app.get('/api/hello', (req, res) => {
+  res.send('Hello');
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
