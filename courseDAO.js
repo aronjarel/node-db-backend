@@ -19,8 +19,7 @@ async function createCourse(name, description, teacherId) {
 async function getCourses() {
   try {
     const pool = await poolPromise;
-    const result = await pool.request()
-      .query(`SELECT * FROM Courses`);
+    const result = await pool.request().query(`SELECT * FROM Courses`);
     return result.recordset;
   } catch (error) {
     throw new Error('Error retrieving courses: ' + error.message);
