@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { poolPromise } = require('/db'); // Import the pool connection from your database module
+const { poolPromise } = require('../db'); // Import the pool connection from your database module
 
 // Health check endpoint
 router.get('/health', async (req, res) => {
