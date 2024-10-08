@@ -20,12 +20,14 @@ const dashboardRoutes = require('./dashboardRoutes');
 // Replace localhost with your frontend's domain in production
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://proud-mud-01a955410.5.azurestaticapps.net', '*'], // Multiple allowed origins
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
   credentials: true, // Allow credentials (if needed)
 };
 
 app.use(cors(corsOptions));
-
+// Manually handle the preflight `OPTIONS` request for all routes
+app.options('*', cors(corsOptions)); // Preflight request handler for all routes
 /*
 // Set CSP header with data URL allowance
 app.use(
