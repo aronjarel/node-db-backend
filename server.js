@@ -15,10 +15,12 @@ const dashboardRoutes = require('./dashboardRoutes');
 // Enable CORS for all routes and origins
 // Replace localhost with your frontend's domain in production
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://proud-mud-01a955410.5.azurestaticapps.net'], // Multiple allowed origins
+  origin: ['http://localhost:3000', 'https://proud-mud-01a955410.5.azurestaticapps.net', '*'], // Multiple allowed origins
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow credentials (if needed)
 };
+
+app.use(cors(corsOptions));
 
 /*
 // Set CSP header with data URL allowance
@@ -38,11 +40,12 @@ app.use(
 */
 
 //set the security header DEVELOPMENT ONLY
-
+/*
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
     return next();
 });
+*/
 
 // Routes
 app.use('/api/dashboard', dashboardRoutes);
