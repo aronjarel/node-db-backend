@@ -4,7 +4,11 @@ const cors = require('cors');  // Import cors middleware
 const helmet = require('helmet');
 const authRoutes = require('./authRoutes');
 const courseRoutes = require('./courseRoutes');
+const healthCheck = require('./routes/healthCheck'); // Import the health check route
+
+
 require('dotenv').config();
+
 
 const app = express();
 app.use(express.json());
@@ -52,6 +56,7 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/auth', authRoutes);
 // Add the new /api/hello route (without authentication)
+app.use('/api', healthCheck);
 app.get('/api/hello', (req, res) => {
   res.send('Hello');
 });
