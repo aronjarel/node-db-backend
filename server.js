@@ -4,6 +4,7 @@ const cors = require('cors');  // Import cors middleware
 const helmet = require('helmet');
 const authRoutes = require('./authRoutes');
 const courseRoutes = require('./courseRoutes');
+const attendanceRoutes = require('./routes/attendanceRoutes');
 const healthCheck = require('./routes/healthCheck'); // Import the health check route
 
 
@@ -57,6 +58,7 @@ app.use(function(req, res, next) {
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/attendance', attendanceRoutes);
 // Add the new /api/hello route (without authentication)
 app.use('/api', healthCheck);
 app.get('/api/hello', (req, res) => {
