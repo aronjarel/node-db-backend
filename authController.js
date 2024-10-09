@@ -23,6 +23,7 @@ async function register(req, res) {
 
 // User login
 async function login(req, res) {
+  console.log("login function running...");
   const { email, password } = req.body;
   try {
     const user = await findUserByEmail(email);
@@ -35,9 +36,13 @@ async function login(req, res) {
       return res.status(400).json({ message: 'Invalid password' });
     }
 
+    console.log("match found: " + isMatch);
     const token = jwt.sign({ userId: user.Id, role: user.Role }, JWT_SECRET, { expiresIn: '1h' });
+
+    console.log("token created");
     res.json({ token });
   } catch (error) {
+    console.log("error on login: " + error.message);
     res.status(500).json({ message: error.message });
   }
 }
