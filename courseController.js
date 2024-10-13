@@ -26,14 +26,18 @@ async function getCoursesHandler(req, res) {
 
 // Update a course (Teachers only)
 async function updateCourseHandler(req, res) {
-  const { name, description } = req.body;
+  const { Name, Description } = req.body;
+  // Check that required fields are not null or undefined
+  if (!Name || !Description) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
   console.log("...in updateCourseHandler...request body: ", req.body);
   const courseId = req.params.id;
 
   console.log("course id:", courseId);
 
   try {
-    await updateCourse(courseId, name, description);
+    await updateCourse(courseId, Name, Description);
     res.json({ message: 'Course updated successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
