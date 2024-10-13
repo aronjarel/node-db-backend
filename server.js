@@ -22,7 +22,7 @@ const dashboardRoutes = require('./dashboardRoutes');
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://proud-mud-01a955410.5.azurestaticapps.net', '*'], // Multiple allowed origins
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+  allowedHeaders: 'Content-Type, Authorization', // Allow specific headers
   credentials: true, // Allow credentials (if needed)
 };
 

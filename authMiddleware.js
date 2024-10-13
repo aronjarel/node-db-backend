@@ -7,7 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 function authenticateToken(req, res, next) {
   console.log('authenticating token...');
   console.log("JWT:", process.env.JWT_SECRET);
-  const authHeader = req.headers['Authorization'];
+  const authHeader = req.headers['authorization'];
   console.log("Auth Header:", authHeader);
   const token = authHeader && authHeader.split(' ')[1];
   
