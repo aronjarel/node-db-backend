@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 // Middleware to verify token and role
 function authenticateToken(req, res, next) {
   console.log("request headers: ", req.headers);
-  const authHeader = req.headers['Authorization'];
+  const authHeader = req.headers['authorization'];
   console.log("Auth Header:", authHeader);
   const token = authHeader && authHeader.split(' ')[1];
   
