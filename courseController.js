@@ -27,7 +27,10 @@ async function getCoursesHandler(req, res) {
 // Update a course (Teachers only)
 async function updateCourseHandler(req, res) {
   const { name, description } = req.body;
+  console.log("...in updateCourseHandler...request body: ", req.body);
   const courseId = req.params.id;
+
+  console.log("course id:", courseId);
 
   try {
     await updateCourse(courseId, name, description);
