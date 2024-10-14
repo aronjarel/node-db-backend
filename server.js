@@ -6,7 +6,7 @@ const authRoutes = require('./authRoutes');
 const courseRoutes = require('./courseRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
 const healthCheck = require('./routes/healthCheck'); // Import the health check route
-
+const scheduleRoutes = require('./routes/scheduleRoutes');
 
 require('dotenv').config();
 
@@ -64,6 +64,8 @@ app.use('/api', healthCheck);
 app.get('/api/hello', (req, res) => {
   res.send('Hello');
 });
+
+app.use('/api/schedules', scheduleRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
