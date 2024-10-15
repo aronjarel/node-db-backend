@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
   
       res.status(200).json(result.recordset);
     } catch (error) {
-      res.status(500).json({ error: 'Error retrieving schedules' });
+      console.log("error getting schedules:", error);
+      res.status(500).json({ error: 'Error retrieving schedules: ' + error });
     }
   });
 
@@ -44,6 +45,7 @@ router.post('/', async (req, res) => {
   
       res.status(201).json({ message: 'Schedule created successfully' });
     } catch (error) {
+      console.log("error adding schedule", error);
       res.status(500).json({ error: 'Error creating schedule' });
     }
   });
