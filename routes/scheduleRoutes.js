@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       const result = await request.query(`
         SELECT s.id, c.class_name, s.day_of_week, s.start_time, s.end_time, c.room
         FROM schedules s
-        JOIN classes c ON s.class_id = c.id
+        JOIN courses c ON s.class_id = c.id
       `);
   
       res.status(200).json(result.recordset);
@@ -102,8 +102,8 @@ router.delete('/:id', async (req, res) => {
     const result = await request.query(`
       SELECT s.id, c.teacher_id, c.room
       FROM schedules s
-      JOIN classes c ON s.class_id = c.id
-      WHERE c.teacher_id = (SELECT teacher_id FROM classes WHERE id = @class_id)
+      JOIN courses c ON s.class_id = c.id
+      WHERE c.teacher_id = (SELECT teacher_id FROM courses WHERE id = @class_id)
       AND s.day_of_week = @day_of_week
       AND s.start_time <= @end_time
       AND s.end_time >= @start_time
