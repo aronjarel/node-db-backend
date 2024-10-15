@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { poolPromise } = require('../db');
+const { sql, poolPromise } = require('../db');
 
 // Get all schedules
 router.get('/', async (req, res) => {
