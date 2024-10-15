@@ -37,6 +37,9 @@ router.post('/', async (req, res) => {
       request.input('day_of_week', sql.VarChar, day_of_week);
       request.input('start_time', sql.Time, start_time);
       request.input('end_time', sql.Time, end_time);
+
+      console.log("request: ", req);
+      console.log("start_time" , start_time);
   
       const result = await request.query(`
         INSERT INTO schedules (class_id, day_of_week, start_time, end_time)
