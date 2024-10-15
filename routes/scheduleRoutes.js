@@ -3,7 +3,7 @@ const router = express.Router();
 const { poolPromise } = require('../db');
 
 // Get all schedules
-router.get('/schedules', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       const request = new sql.Request();
       const result = await request.query(`
@@ -19,7 +19,7 @@ router.get('/schedules', async (req, res) => {
   });
 
 // Create a new schedule
-router.post('/schedules', async (req, res) => {
+router.post('/', async (req, res) => {
     const { class_id, day_of_week, start_time, end_time } = req.body;
   
     // Check if there are conflicts with existing schedules
@@ -49,7 +49,7 @@ router.post('/schedules', async (req, res) => {
   });
 
 // Update a schedule
-router.put('/schedules/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     const { day_of_week, start_time, end_time } = req.body;
     const { id } = req.params;
   
@@ -73,7 +73,7 @@ router.put('/schedules/:id', async (req, res) => {
   });
 
 // Delete a schedule
-router.delete('/schedules/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const { id } = req.params;
   
     try {
